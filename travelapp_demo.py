@@ -4,8 +4,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 import streamlit as st
 
-api_key = st.text_input("Enter your OpenAI API Key", type="password")
-if not api_key:
+OPENAI_API_KEY = st.text_input("Enter your OpenAI API Key", type="password")
+if not OPENAI_API_KEY:
     st.warning("Please enter your OpenAI API key to continue")
     st.stop()
 llm = ChatOpenAI(model="gpt-4",api_key=OPENAI_API_KEY)
@@ -33,3 +33,4 @@ if city:
     response = llm.invoke(prompt_template.format(city=city,month=month,language=language,budget=budget))
 
     st.write(response.content)
+
